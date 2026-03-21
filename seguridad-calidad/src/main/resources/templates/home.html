@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<!-- CSS se enlaza por /css/style.css para unificar estilo en todas las vistas. -->
+<title>Inicio</title>
+<!-- Más adelante podríamos agregar un framework para agilizar la creacíon de plantillas y componentes, además de la
+    definición del layout de las plantillas -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<!-- Header comun para mantener navegacion consistente entre modulos. -->
+<header class="topbar">
+    <h1 th:text="${name}"></h1>
+    <nav>
+        <a href="/home" class="active">Inicio</a>
+        <a href="/pacientes">Pacientes</a>
+        <a href="/citas">Citas</a>
+        <a sec:authorize="!isAuthenticated()" href="/login">Iniciar sesion</a>
+        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" class="inline-form">
+            <button type="submit">Cerrar sesion</button>
+        </form>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="panel">
+        <h2>Bienvenido</h2>
+        <!-- Mensajes distintos segun estado de autenticacion para aclarar acceso publico/privado. -->
+        <p>Aplicacion de administracion veterinaria con autenticacion y autorizacion.</p>
+        <p sec:authorize="isAuthenticated()">
+            Usuario autenticado: <strong sec:authentication="name"></strong>
+        </p>
+        <p sec:authorize="!isAuthenticated()">
+            Para acceder a modulos privados, inicie sesion en la plataforma.
+        </p>
+    </section>
+</main>
+
+</body>
+</html>

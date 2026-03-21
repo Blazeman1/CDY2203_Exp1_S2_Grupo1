@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Citas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- Vista privada para programar citas asociadas a pacientes existentes. -->
+<header class="topbar">
+    <h1>Gestion Veterinaria</h1>
+    <nav>
+        <a href="/home">Inicio</a>
+        <a href="/pacientes">Pacientes</a>
+        <a href="/citas" class="active">Citas</a>
+        <form th:action="@{/logout}" method="post" class="inline-form">
+            <button type="submit">Cerrar sesion</button>
+        </form>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="panel">
+        <h2>Programar cita</h2>
+        <!-- Error de validacion por campos vacios o paciente invalido. -->
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+        <form th:action="@{/citas}" method="post" class="grid-form">
+            <!-- Select dependiente de pacientes para evitar citas sin referencia. -->
+            <label>Paciente
+                <select name="pacienteId" required>
+                    <option value="" selected disabled>Seleccione un paciente</option>
+                    <option th:each="p : ${pacientes}" th:value="${p.id}" th:text="${p.nombre}"></option>
+                </select>
+            </label>
+            <label>Fecha
+                <input type="date" name="fecha" required>
+            </label>
+            <label>Hora
+                <input type="time" name="hora" required>
+            </label>
+            <label>Motivo
+                <input type="text" name="motivo" required>
+            </label>
+            <label>Veterinario asignado
+                <input type="text" name="veterinario" required>
+            </label>
+            <button type="submit">Guardar cita</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Listado de citas</h2>
+        <!-- Listado para evidenciar que el almacenamiento en memoria funciona. -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Motivo</th>
+                <th>Veterinario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(citas)}">
+                <td colspan="6">No hay citas registradas.</td>
+            </tr>
+            <tr th:each="c : ${citas}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.pacienteNombre}"></td>
+                <td th:text="${c.fecha}"></td>
+                <td th:text="${c.hora}"></td>
+                <td th:text="${c.motivo}"></td>
+                <td th:text="${c.veterinario}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+FROM mysql:8.4
+
+# Solo se deja la base por defecto; credenciales se inyectan al ejecutar el contenedor.
+ARG MYSQL_DATABASE=seguridad_calidad_db
+ENV MYSQL_DATABASE=${MYSQL_DATABASE}
+
+# Exponer el puerto de MySQL
+EXPOSE 3306
+# DATOS DE PRUEBA
+# Se pueden usar variables de entorno para crear un usuario y contraseña al iniciar el contenedor.
+# Ejemplo: -e MYSQL_USER=usuario -e MYSQL_PASSWORD=contraseña
+

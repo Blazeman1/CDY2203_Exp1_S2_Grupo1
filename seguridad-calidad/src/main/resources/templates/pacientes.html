@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- Vista privada para registrar y consultar pacientes en memoria. -->
+<header class="topbar">
+    <h1>Gestion Veterinaria</h1>
+    <nav>
+        <a href="/home">Inicio</a>
+        <a href="/pacientes" class="active">Pacientes</a>
+        <a href="/citas">Citas</a>
+        <form th:action="@{/logout}" method="post" class="inline-form">
+            <button type="submit">Cerrar sesion</button>
+        </form>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="panel">
+        <h2>Registrar paciente</h2>
+        <!-- Error de validacion del backend para campos obligatorios. -->
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+        <form th:action="@{/pacientes}" method="post" class="grid-form">
+            <label>Nombre
+                <input type="text" name="nombre" required>
+            </label>
+            <label>Especie
+                <input type="text" name="especie" required>
+            </label>
+            <label>Raza
+                <input type="text" name="raza" required>
+            </label>
+            <label>Edad
+                <input type="number" name="edad" min="0" required>
+            </label>
+            <label>Dueno
+                <input type="text" name="dueno" required>
+            </label>
+            <button type="submit">Guardar paciente</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Listado de pacientes</h2>
+        <!-- Tabla simple para evidenciar persistencia en memoria durante la sesion. -->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Dueno</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(pacientes)}">
+                <td colspan="6">No hay pacientes registrados.</td>
+            </tr>
+            <tr th:each="p : ${pacientes}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.nombre}"></td>
+                <td th:text="${p.especie}"></td>
+                <td th:text="${p.raza}"></td>
+                <td th:text="${p.edad}"></td>
+                <td th:text="${p.dueno}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

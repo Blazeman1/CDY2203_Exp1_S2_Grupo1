@@ -1,0 +1,152 @@
+/*
+ * Hoja de estilos comun para todas las vistas de semana 1.
+ * Se centralizo para evitar estilos inline y mantener consistencia visual.
+ */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f4f7fb;
+	color: #202836;
+}
+
+.topbar {
+	background: #0f3d63;
+	color: #ffffff;
+	padding: 1rem 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.topbar h1 {
+	margin: 0;
+	font-size: 1.25rem;
+}
+
+.topbar nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.topbar a {
+	text-decoration: none;
+	color: #ffffff;
+	padding: 0.45rem 0.7rem;
+	border-radius: 6px;
+}
+
+.topbar a:hover,
+.topbar a.active {
+	background: #1f5f94;
+}
+
+.container {
+	width: min(1040px, 92%);
+	margin: 1.4rem auto;
+	display: grid;
+	gap: 1rem;
+}
+
+.panel {
+	background: #ffffff;
+	border: 1px solid #dce4ef;
+	border-radius: 10px;
+	padding: 1rem;
+	box-shadow: 0 2px 6px rgba(15, 61, 99, 0.08);
+}
+
+.panel h2,
+.panel h1 {
+	margin-top: 0;
+}
+
+.grid-form {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.grid-form label {
+	display: grid;
+	gap: 0.25rem;
+	font-weight: 600;
+}
+
+.grid-form input,
+.grid-form select {
+	padding: 0.55rem;
+	border: 1px solid #bccbde;
+	border-radius: 6px;
+	font-size: 0.95rem;
+}
+
+button {
+	border: none;
+	border-radius: 6px;
+	background: #0f3d63;
+	color: #ffffff;
+	padding: 0.55rem 0.9rem;
+	cursor: pointer;
+	font-size: 0.95rem;
+}
+
+button:hover {
+	background: #1a5a8f;
+}
+
+.inline-form {
+	margin: 0;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	border: 1px solid #d8e2f0;
+	padding: 0.5rem;
+	text-align: left;
+}
+
+thead {
+	background: #edf3fb;
+}
+
+.error {
+	color: #a00020;
+	font-weight: 600;
+}
+
+.success {
+	color: #1f6d35;
+	font-weight: 600;
+}
+
+.help-text {
+	color: #52627a;
+	font-size: 0.92rem;
+}
+
+.login-page {
+	max-width: 460px;
+}
+
+@media (max-width: 680px) {
+	.topbar {
+		justify-content: center;
+		text-align: center;
+	}
+
+	.topbar nav {
+		justify-content: center;
+	}
+}

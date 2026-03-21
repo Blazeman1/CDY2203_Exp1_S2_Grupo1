@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Iniciar sesion</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <main class="container login-page">
+        <section class="panel login-panel">
+            <h1>Acceso al sistema</h1>
+            <!-- Mensajes de feedback enviados por Spring Security mediante query params. -->
+            <p class="error" th:if="${param.error}">Credenciales invalidas.</p>
+            <p class="success" th:if="${param.logout}">Sesion cerrada correctamente.</p>
+
+            <!-- Formulario estandar que publica a /login para autenticacion. -->
+            <form th:action="@{/login}" method="post" class="grid-form">
+                <label>Usuario
+                    <input type="text" name="username" required />
+                </label>
+                <label>Contrasena
+                    <input type="password" name="password" required />
+                </label>
+                <button type="submit">Ingresar</button>
+            </form>
+
+            <!-- Credenciales visibles para facilitar pruebas del evaluador en semana 1. -->
+            <p class="help-text">Usuarios de prueba: admin/admin123, vet/vet123, recep/recep123</p>
+            <p><a href="/">Volver a inicio</a></p>
+        </section>
+    </main>
+</body>
+</html>
