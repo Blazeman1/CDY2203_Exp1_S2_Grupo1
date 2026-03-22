@@ -1,33 +1,85 @@
-HELP.md
+# ============================================
+# Archivos de compilación y dependencias
+# ============================================
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# ============================================
+# Configuración sensible (¡NO SUBIR A GITHUB!)
+# ============================================
+.env
+application-local.properties
+*.key
+*.crt
+*.pem
+*.p12
+*.jks
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# ============================================
+# Archivos de IDE
+# ============================================
+# VS Code
 .vscode/
+.history/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/
+nb-configuration.xml
+
+# ============================================
+# Archivos de logs
+# ============================================
+*.log
+logs/
+*.log.gz
+
+# ============================================
+# Archivos del sistema operativo
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Archivos temporales
+# ============================================
+*.tmp
+*.bak
+*.swp
+*~
+*.orig
+
+# ============================================
+# Docker (archivos generados)
+# ============================================
+.dockerignore
+*.pid
+
+# ============================================
+# Spring Boot
+# ============================================
+spring-boot-devtools.pid
+
+# ============================================
+# Maven
+# ============================================
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties.bak

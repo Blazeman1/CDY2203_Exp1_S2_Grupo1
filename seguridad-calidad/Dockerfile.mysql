@@ -1,8 +1,14 @@
 FROM mysql:8.4
 
 # Solo se deja la base por defecto; credenciales se inyectan al ejecutar el contenedor.
-ARG MYSQL_DATABASE=seguridad_calidad_db
-ENV MYSQL_DATABASE=${MYSQL_DATABASE}
+# ARG MYSQL_DATABASE=seguridad_calidad_db
+# ENV MYSQL_DATABASE=${MYSQL_DATABASE}
+
+ENV MYSQL_ROOT_PASSWORD=password
+ENV MYSQL_DATABASE=seguridad_calidad_db
+ENV MYSQL_USER=myuser
+ENV MYSQL_PASSWORD=password
+
 
 # Exponer el puerto de MySQL
 EXPOSE 3306
